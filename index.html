@@ -13,28 +13,174 @@ display:flex;
 justify-content:center;
 align-items:center;
 background:linear-gradient(135deg,#ffd1dc,#ffe6ee);
-font-family:'Poppins',sans-serif;
+font-family:Poppins,sans-serif;
 overflow:hidden;
 }
 
-/* ENVELOPE */
+/* amplop */
 
 .envelope{
-width:260px;
-height:180px;
-background:#ff8fab;
-position:relative;
-cursor:pointer;
+width:220px;
+height:150px;
+background:#ff6f91;
 border-radius:10px;
 display:flex;
 justify-content:center;
 align-items:center;
 color:white;
 font-weight:bold;
+cursor:pointer;
+animation:shake 1.5s infinite;
 }
 
-.envelope:before{
-content:"";
+@keyframes shake{
+0%{transform:rotate(0)}
+25%{transform:rotate(2deg)}
+50%{transform:rotate(-2deg)}
+75%{transform:rotate(2deg)}
+100%{transform:rotate(0)}
+}
+
+/* surat */
+
+.letter{
+position:absolute;
+width:330px;
+background:white;
+padding:30px;
+border-radius:15px;
+box-shadow:0 10px 30px rgba(0,0,0,0.2);
+text-align:center;
+opacity:0;
+transform:scale(0.8);
+transition:0.5s;
+}
+
+.show{
+opacity:1;
+transform:scale(1);
+}
+
+/* teks */
+
+.name{
+font-size:26px;
+color:#ff4f81;
+font-weight:bold;
+margin:10px 0;
+}
+
+.text{
+font-size:15px;
+color:#444;
+margin:8px 0;
+opacity:0;
+}
+
+/* animasi hati */
+
+.heart{
+position:absolute;
+color:#ff4f81;
+animation:fall 6s linear infinite;
+}
+
+@keyframes fall{
+0%{transform:translateY(-10vh)}
+100%{transform:translateY(110vh)}
+}
+
+button{
+margin-top:10px;
+background:#ff4f81;
+border:none;
+color:white;
+padding:8px 15px;
+border-radius:10px;
+cursor:pointer;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="envelope" onclick="openLetter()">
+tap me 💌
+</div>
+
+<div class="letter" id="letter">
+
+<div class="name">hey nata</div>
+
+<p class="text">ngl... meeting you was kinda unexpected</p>
+<p class="text">but now you're literally my favorite person</p>
+<p class="text">life feels softer when you're around</p>
+<p class="text">so yeah...</p>
+<p class="text" style="font-weight:bold;color:#ff4f81;">
+i love you 💗
+</p>
+
+<button onclick="moreLove()">press this 😶‍🌫️</button>
+
+</div>
+
+<audio id="music" loop>
+<source src="nothing.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+function openLetter(){
+
+document.querySelector(".envelope").style.display="none";
+
+let letter=document.getElementById("letter");
+letter.classList.add("show");
+
+let audio=document.getElementById("music");
+audio.play();
+
+let texts=document.querySelectorAll(".text");
+
+texts.forEach((t,i)=>{
+setTimeout(()=>{
+t.style.opacity=1;
+},800*i);
+});
+
+}
+
+/* tombol lucu */
+
+function moreLove(){
+
+alert("just a reminder: you're my favorite person fr 💗");
+
+}
+
+/* hati jatuh */
+
+setInterval(()=>{
+
+let heart=document.createElement("div");
+heart.className="heart";
+heart.innerHTML="💗";
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=(20+Math.random()*30)+"px";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},6000);
+
+},400);
+
+</script>
+
+</body>
+</html>content:"";
 position:absolute;
 top:0;
 left:0;
