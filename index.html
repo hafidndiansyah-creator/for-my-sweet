@@ -13,11 +13,11 @@ display:flex;
 justify-content:center;
 align-items:center;
 background:linear-gradient(135deg,#ffd1dc,#ffe6ee);
-font-family:Poppins,sans-serif;
+font-family:Arial, sans-serif;
 overflow:hidden;
 }
 
-/* amplop */
+/* ENVELOPE */
 
 .envelope{
 width:220px;
@@ -41,63 +41,54 @@ animation:shake 1.5s infinite;
 100%{transform:rotate(0)}
 }
 
-/* surat */
+/* LETTER */
 
 .letter{
 position:absolute;
-width:330px;
+width:320px;
 background:white;
 padding:30px;
 border-radius:15px;
 box-shadow:0 10px 30px rgba(0,0,0,0.2);
 text-align:center;
-opacity:0;
-transform:scale(0.8);
-transition:0.5s;
+display:none;
 }
-
-.show{
-opacity:1;
-transform:scale(1);
-}
-
-/* teks */
 
 .name{
-font-size:26px;
+font-size:24px;
 color:#ff4f81;
 font-weight:bold;
-margin:10px 0;
+margin-bottom:10px;
 }
 
 .text{
-font-size:15px;
+font-size:14px;
 color:#444;
-margin:8px 0;
+margin-top:6px;
 opacity:0;
-}
-
-/* animasi hati */
-
-.heart{
-position:absolute;
-color:#ff4f81;
-animation:fall 6s linear infinite;
-}
-
-@keyframes fall{
-0%{transform:translateY(-10vh)}
-100%{transform:translateY(110vh)}
+transition:0.5s;
 }
 
 button{
-margin-top:10px;
+margin-top:12px;
 background:#ff4f81;
 border:none;
 color:white;
 padding:8px 15px;
 border-radius:10px;
 cursor:pointer;
+}
+
+/* HEARTS */
+
+.heart{
+position:absolute;
+animation:fall 6s linear infinite;
+}
+
+@keyframes fall{
+0%{transform:translateY(-10vh)}
+100%{transform:translateY(110vh)}
 }
 
 </style>
@@ -113,11 +104,11 @@ tap me 💌
 
 <div class="name">hey nata</div>
 
-<p class="text">ngl... meeting you was kinda unexpected</p>
+<p class="text">ngl... meeting you was kinda random</p>
 <p class="text">but now you're literally my favorite person</p>
 <p class="text">life feels softer when you're around</p>
 <p class="text">so yeah...</p>
-<p class="text" style="font-weight:bold;color:#ff4f81;">
+<p class="text" style="color:#ff4f81;font-weight:bold;">
 i love you 💗
 </p>
 
@@ -134,24 +125,19 @@ i love you 💗
 function openLetter(){
 
 document.querySelector(".envelope").style.display="none";
-
-let letter=document.getElementById("letter");
-letter.classList.add("show");
-
-let audio=document.getElementById("music");
-audio.play();
+document.getElementById("letter").style.display="block";
 
 let texts=document.querySelectorAll(".text");
 
 texts.forEach((t,i)=>{
 setTimeout(()=>{
 t.style.opacity=1;
-},800*i);
+},700*i);
 });
 
-}
+document.getElementById("music").play();
 
-/* tombol lucu */
+}
 
 function moreLove(){
 
@@ -159,13 +145,14 @@ alert("just a reminder: you're my favorite person fr 💗");
 
 }
 
-/* hati jatuh */
+/* falling hearts */
 
 setInterval(()=>{
 
 let heart=document.createElement("div");
 heart.className="heart";
 heart.innerHTML="💗";
+
 heart.style.left=Math.random()*100+"vw";
 heart.style.fontSize=(20+Math.random()*30)+"px";
 
@@ -177,264 +164,6 @@ heart.remove();
 
 },400);
 
-</script>
-
-</body>
-</html>content:"";
-position:absolute;
-top:0;
-left:0;
-border-left:130px solid transparent;
-border-right:130px solid transparent;
-border-top:90px solid #ff4f81;
-}
-
-/* LETTER */
-
-.letter{
-position:absolute;
-background:white;
-padding:40px;
-width:320px;
-border-radius:15px;
-text-align:center;
-box-shadow:0 10px 25px rgba(0,0,0,0.2);
-opacity:0;
-transform:scale(0.8);
-transition:0.5s;
-}
-
-.show{
-opacity:1;
-transform:scale(1);
-}
-
-/* TEXT */
-
-.title{
-font-size:26px;
-font-weight:bold;
-}
-
-.name{
-font-size:28px;
-color:#ff4f81;
-font-weight:bold;
-margin:10px 0;
-}
-
-.text{
-font-size:15px;
-color:#444;
-margin-top:10px;
-}
-
-/* HEARTS */
-
-.heart{
-position:absolute;
-color:#ff4f81;
-animation:fall 6s linear infinite;
-}
-
-@keyframes fall{
-0%{transform:translateY(-10vh);}
-100%{transform:translateY(110vh);}
-}
-
-</style>
-</head>
-
-<body>
-
-<div class="envelope" onclick="openLetter()">
-tap to open 💌
-</div>
-
-<div class="letter" id="letter">
-
-<div class="title">hey you</div>
-
-<div class="name">NATA</div>
-
-<p class="text">
-ngl… meeting you was kinda the best thing that happened to me.
-</p>
-
-<p class="text">
-you’re literally my favorite person rn.
-like fr… life feels softer with you around.
-</p>
-
-<p class="text">
-so yeah… just in case you forgot:
-</p>
-
-<p style="font-size:22px;color:#ff4f81;font-weight:bold;">
-i love you 💗
-</p>
-
-<p class="text">
-stay with me for a long time ok?
-</p>
-
-</div>
-
-<audio id="music" loop>
-<source src="nothing.mp3" type="audio/mpeg">
-</audio>
-
-<script>
-
-function openLetter(){
-
-document.querySelector(".envelope").style.display="none";
-
-let letter=document.getElementById("letter");
-letter.classList.add("show");
-
-let audio=document.getElementById("music");
-audio.volume=0.7;
-audio.play();
-
-}
-
-/* falling hearts */
-
-setInterval(()=>{
-let heart=document.createElement("div");
-heart.className="heart";
-heart.innerHTML="💗";
-heart.style.left=Math.random()*100+"vw";
-heart.style.fontSize=(20+Math.random()*30)+"px";
-
-document.body.appendChild(heart);
-
-setTimeout(()=>{heart.remove();},6000);
-
-},400);
-
-</script>
-
-</body>
-</html>}
-
-.name{
-font-size:32px;
-color:#ff4f81;
-font-weight:bold;
-}
-
-.text{
-font-size:17px;
-color:#444;
-margin-top:10px;
-}
-
-/* dekorasi gambar pojok */
-.corner{
-position:absolute;
-width:120px;
-}
-
-.tl{top:10px;left:10px;}
-.tr{top:10px;right:10px;}
-.bl{bottom:10px;left:10px;}
-.br{bottom:10px;right:10px;}
-
-/* animasi hati */
-.heart{
-position:absolute;
-color:#ff4f81;
-animation:fall 6s linear infinite;
-}
-
-@keyframes fall{
-0%{transform:translateY(-10vh);}
-100%{transform:translateY(110vh);}
-}
-
-/* tombol play */
-.playbtn{
-position:fixed;
-bottom:20px;
-right:20px;
-background:#ff4f81;
-color:white;
-border:none;
-padding:12px 18px;
-border-radius:20px;
-cursor:pointer;
-font-size:14px;
-}
-</style>
-</head>
-
-<body>
-
-<!-- gambar dekor (boleh ganti link pinterest) -->
-<img src="https://i.pinimg.com/736x/52/5b/64/525b64a0c54dfb6c72b4f7b40d0b7d6c.jpg" class="corner tl">
-<img src="https://i.pinimg.com/736x/8d/0f/58/8d0f58e3a8a1f3e0c77c2fd2a2df61f3.jpg" class="corner tr">
-<img src="https://i.pinimg.com/736x/2e/40/4c/2e404c7c87e8c746ccece7a4e88bce1c.jpg" class="corner bl">
-<img src="https://i.pinimg.com/736x/44/9c/5a/449c5a0c9d7e6c2e3d2e9f3e6a9f3f6b.jpg" class="corner br">
-
-<div class="card">
-
-<div class="title">THIS</div>
-<div class="big">BEST GIRLFRIEND</div>
-
-<p>has been presented to :</p>
-
-<div class="name">NATAAA</div>
-
-<hr>
-
-<p class="text">
-for being a good person 💗
-</p>
-
-<p class="text">
-i hope you always feel loved and happy with me
-</p>
-
-<div style="font-size:60px;">🏅</div>
-
-</div>
-
-<audio id="music" loop>
-<source src="nothing.mp3" type="audio/mpeg">
-</audio>
-
-<button class="playbtn" onclick="playMusic()">play music 🎵</button>
-
-<script>
-let audio=document.getElementById("music");
-
-function playMusic(){
-audio.volume=0.7;
-audio.play();
-}
-
-/* coba autoplay */
-window.addEventListener("load",()=>{
-audio.play().catch(()=>{
-document.body.addEventListener("click",()=>{
-audio.play();
-},{once:true});
-});
-});
-
-/* animasi hati jatuh */
-setInterval(()=>{
-let heart=document.createElement("div");
-heart.className="heart";
-heart.innerHTML="💗";
-heart.style.left=Math.random()*100+"vw";
-heart.style.fontSize=(20+Math.random()*30)+"px";
-document.body.appendChild(heart);
-
-setTimeout(()=>{heart.remove();},6000);
-},400);
 </script>
 
 </body>
