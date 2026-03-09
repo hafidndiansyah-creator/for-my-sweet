@@ -13,7 +13,7 @@ height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-background:linear-gradient(135deg,#ffd1dc,#ffe6ee);
+background:linear-gradient(120deg,#ffc2d1,#ffe6f0,#ffd6e0);
 font-family:Arial;
 overflow:hidden;
 }
@@ -49,7 +49,7 @@ width:70vw;
 max-width:260px;
 height:160px;
 background:#ff6f91;
-border-radius:12px;
+border-radius:14px;
 display:flex;
 justify-content:center;
 align-items:center;
@@ -58,6 +58,7 @@ font-weight:bold;
 cursor:pointer;
 animation:shake 1.6s infinite;
 z-index:2;
+box-shadow:0 10px 20px rgba(0,0,0,0.15);
 }
 
 @keyframes shake{
@@ -72,13 +73,13 @@ z-index:2;
 
 .letter{
 position:absolute;
-width:85vw;
+width:88vw;
 max-width:340px;
 background:white;
 padding:25px;
-border-radius:16px;
-box-shadow:0 10px 30px rgba(0,0,0,0.2);
-text-align:center;
+border-radius:18px;
+box-shadow:0 12px 30px rgba(0,0,0,0.2);
+text-align:left;
 display:none;
 z-index:3;
 animation:pop 0.5s;
@@ -89,21 +90,21 @@ animation:pop 0.5s;
 100%{transform:scale(1);opacity:1;}
 }
 
-/* photo */
+/* photo top right */
 
 .photo{
-display:flex;
-justify-content:center;
-margin-bottom:10px;
+position:absolute;
+top:-35px;
+right:-20px;
 }
 
 .photo img{
-width:110px;
-height:110px;
+width:90px;
+height:90px;
 border-radius:50%;
 object-fit:cover;
-border:4px solid #ff4f81;
-box-shadow:0 0 20px rgba(255,79,129,0.5);
+border:4px solid white;
+box-shadow:0 0 15px rgba(255,79,129,0.6);
 }
 
 /* text */
@@ -112,6 +113,7 @@ box-shadow:0 0 20px rgba(255,79,129,0.5);
 font-size:22px;
 color:#ff4f81;
 font-weight:bold;
+margin-bottom:10px;
 }
 
 .text{
@@ -125,7 +127,7 @@ transition:0.5s;
 /* button */
 
 button{
-margin-top:14px;
+margin-top:16px;
 background:#ff4f81;
 border:none;
 color:white;
@@ -218,7 +220,7 @@ function showLove(){
 document.getElementById("popup").classList.add("show");
 }
 
-/* hearts background */
+/* hearts */
 
 setInterval(()=>{
 
