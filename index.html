@@ -2,39 +2,176 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>For Nata 💗</title>
+<title>For Nata 💌</title>
 
 <style>
+
 body{
 margin:0;
 height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-background:linear-gradient(135deg,#f7c9d7,#f3d9e2);
-font-family:'Segoe UI',cursive;
+background:linear-gradient(135deg,#ffd1dc,#ffe6ee);
+font-family:'Poppins',sans-serif;
 overflow:hidden;
 }
 
-/* kartu tengah */
-.card{
-width:650px;
-padding:40px;
-background:white;
-border-radius:20px;
-text-align:center;
-box-shadow:0 15px 35px rgba(0,0,0,0.15);
+/* ENVELOPE */
+
+.envelope{
+width:260px;
+height:180px;
+background:#ff8fab;
+position:relative;
+cursor:pointer;
+border-radius:10px;
+display:flex;
+justify-content:center;
+align-items:center;
+color:white;
+font-weight:bold;
 }
+
+.envelope:before{
+content:"";
+position:absolute;
+top:0;
+left:0;
+border-left:130px solid transparent;
+border-right:130px solid transparent;
+border-top:90px solid #ff4f81;
+}
+
+/* LETTER */
+
+.letter{
+position:absolute;
+background:white;
+padding:40px;
+width:320px;
+border-radius:15px;
+text-align:center;
+box-shadow:0 10px 25px rgba(0,0,0,0.2);
+opacity:0;
+transform:scale(0.8);
+transition:0.5s;
+}
+
+.show{
+opacity:1;
+transform:scale(1);
+}
+
+/* TEXT */
 
 .title{
-font-size:28px;
+font-size:26px;
+font-weight:bold;
 }
 
-.big{
-font-size:40px;
+.name{
+font-size:28px;
+color:#ff4f81;
 font-weight:bold;
 margin:10px 0;
 }
+
+.text{
+font-size:15px;
+color:#444;
+margin-top:10px;
+}
+
+/* HEARTS */
+
+.heart{
+position:absolute;
+color:#ff4f81;
+animation:fall 6s linear infinite;
+}
+
+@keyframes fall{
+0%{transform:translateY(-10vh);}
+100%{transform:translateY(110vh);}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="envelope" onclick="openLetter()">
+tap to open 💌
+</div>
+
+<div class="letter" id="letter">
+
+<div class="title">hey you</div>
+
+<div class="name">NATA</div>
+
+<p class="text">
+ngl… meeting you was kinda the best thing that happened to me.
+</p>
+
+<p class="text">
+you’re literally my favorite person rn.
+like fr… life feels softer with you around.
+</p>
+
+<p class="text">
+so yeah… just in case you forgot:
+</p>
+
+<p style="font-size:22px;color:#ff4f81;font-weight:bold;">
+i love you 💗
+</p>
+
+<p class="text">
+stay with me for a long time ok?
+</p>
+
+</div>
+
+<audio id="music" loop>
+<source src="nothing.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+function openLetter(){
+
+document.querySelector(".envelope").style.display="none";
+
+let letter=document.getElementById("letter");
+letter.classList.add("show");
+
+let audio=document.getElementById("music");
+audio.volume=0.7;
+audio.play();
+
+}
+
+/* falling hearts */
+
+setInterval(()=>{
+let heart=document.createElement("div");
+heart.className="heart";
+heart.innerHTML="💗";
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=(20+Math.random()*30)+"px";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{heart.remove();},6000);
+
+},400);
+
+</script>
+
+</body>
+</html>}
 
 .name{
 font-size:32px;
